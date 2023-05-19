@@ -1,0 +1,20 @@
+.contador {
+    height: 10px;
+    width: 10px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+    font-size: 7px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.carrito {
+    padding: 3px;
+    display: inline;
+    position: relative;
+}

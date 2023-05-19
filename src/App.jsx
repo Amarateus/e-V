@@ -1,6 +1,13 @@
+import { ItemListContainer } from "./components/layout/itemListContainer/ItemListContainer";
+import { NavBar } from "./components/layout/navBar/NavBar";
 
 function App() {
-  return <h1>App</h1>;
+  return (
+    <>
+      <NavBar />
+      <ItemListContainer greeting={"Mateo"}/>
+    </>
+  );
 }
 
 export default App;
