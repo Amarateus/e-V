@@ -14,7 +14,9 @@
 }
 
 .carrito {
+    height: 25px;
+    width: 25px;
     padding: 3px;
-    display: inline;
+    display: inline-block;
     position: relative;
 }

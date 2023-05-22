@@ -1,4 +1,5 @@
-import { CartWidget } from "../../common/cartWidget/CartWidget";
+// import { CartWidget } from "../../common/cartWidget/CartWidget";
+import { CartWidgetUi } from "../../common/cartWidgetUi/CartWidgetUi";
 import styles from "./NavBar.module.css"
 
 export const NavBar = () => {
@@ -15,7 +16,7 @@ export const NavBar = () => {
         <li>Colchonetas</li>
       </ul>
       <div>
-        <CartWidget />
+        <CartWidgetUi />
       </div>
     </div>
   );
