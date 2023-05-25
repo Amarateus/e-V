@@ -1,4 +1,6 @@
-module.exports = {
+import { ViewModule } from "@mui/icons-material";
+
+ViewModule.exports = {
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
