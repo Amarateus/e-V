@@ -2,8 +2,9 @@ import * as React from "react";
 import { NavBar } from "./NavBar";
 
 const pages = [
+  "Todos",
   "Mancuernas",
-  "Pesas Rusas",
+  "Pesas rusas",
   "Barras",
   "Elasticos",
   "Pelotas",
@@ -22,11 +23,13 @@ export function NavBarContainer() {
   };
 
   return (
-    <NavBar
-      anchorElNav={anchorElNav}
-      handleCloseNavMenu={handleCloseNavMenu}
-      handleOpenNavMenu={handleOpenNavMenu}
-      pages={pages}
-    />
+    <>
+      <NavBar
+        anchorElNav={anchorElNav}
+        handleCloseNavMenu={handleCloseNavMenu}
+        handleOpenNavMenu={handleOpenNavMenu}
+        pages={pages}
+      />
+    </>
   );
 }

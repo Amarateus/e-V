@@ -7,7 +7,7 @@ export const ProductDetailContainer = () => {
   const [producto, setProducto] = useState({});
 
   //   const { id } = useParams();
-  const id = 8;
+  const {id} = useParams()
 
   useEffect(() => {
     let productosFind = productos.find((producto) => producto.id === +id);

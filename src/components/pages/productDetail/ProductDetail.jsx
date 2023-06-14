@@ -1,3 +1,4 @@
+import { Container } from "@mui/material";
 import { ItemCount } from "../../common/itemCount/ItemCount";
 import { ProductCardContainer } from "../../common/productCard/ProductCardContainer";
 
@@ -7,15 +8,22 @@ export const ProductDetail = ({ producto }) => {
       ...producto,
       cantidad: cant,
     };
+    console.log(data);
   };
   return (
     <>
-      <ProductCardContainer elemento={producto} width={500}/>
-      {producto.stock > 0 ? (
-        <ItemCount stock={producto.stock} initial={1} onAdd={onAdd} />
-      ) : (
-        <h3>No hay stock</h3>
-      )}
+      <Container maxWidth={"md"} sx={{ paddingTop: 3 }}>
+        <ProductCardContainer
+          elemento={producto}
+          width={500}
+          mensajeBoton={"Comprar"}
+        />
+        {producto.stock > 0 ? (
+          <ItemCount stock={producto.stock} initial={1} onAdd={onAdd} />
+        ) : (
+          <h3>No hay stock</h3>
+        )}
+      </Container>
     </>
   );
 };

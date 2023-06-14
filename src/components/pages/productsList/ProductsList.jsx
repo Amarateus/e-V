@@ -1,22 +1,28 @@
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { ProductCardContainer } from "../../common/productCard/ProductCardContainer";
 
 export const ProductsList = ({ elementos }) => {
   return (
-    <Grid
-      container
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      spacing={2}
-    >
-      {elementos.map((elemento) => {
-        return (
-          <Grid item xs={12} sm={6} md={4}>
-            <ProductCardContainer key={elemento.id} elemento={elemento} width={250}/>
-          </Grid>
-        );
-      })}
-    </Grid>
+    <Container maxWidth={"md"} sx={{ paddingTop: 3 }}>
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        spacing={2}
+      >
+        {elementos.map((elemento) => {
+          return (
+            <Grid key={elemento.id} item xs={10} sm={4} md={3}>
+              <ProductCardContainer
+                elemento={elemento}
+                // width={200}
+                mensajeBoton={"Ver detalle"}
+              />
+            </Grid>
+          );
+        })}
+      </Grid>
+    </Container>
   );
 };
