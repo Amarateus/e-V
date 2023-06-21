@@ -5,6 +5,9 @@ import { ProductDetailContainer } from "./components/pages/productDetail/Product
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
 import { CartContainer } from "./components/pages/cart/CartContainer";
+import { Form } from "./components/pages/form/Form";
+import { menuRoutes } from "./routes/menuRoutes";
+menuRoutes;
 
 const darkTheme = createTheme({
   palette: {
@@ -20,13 +23,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<ProductsListContainer />} />
-            <Route path="/category/:categoryName" element={<ProductsListContainer />} />
-            <Route path="/productDetail/:id" element={<ProductDetailContainer />} />
-            <Route path="/cart" element={<CartContainer />} />
+            {menuRoutes.map(({ id, path, Element }) => (
+              <Route key={id} path={path} element={<Element />} />
+            ))}
           </Route>
 
-            <Route path="*" element={<h1>404 not found</h1>} />
+          <Route path="*" element={<h1>404 not found</h1>} />
         </Routes>
       </BrowserRouter>
       {/* <NavBarContainer>
