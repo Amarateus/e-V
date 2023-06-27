@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { ProductsList } from "./ProductsList";
 import { productos } from "../../../productsMock";
 import { useParams } from "react-router-dom";
+import { db } from "../../../firebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 export const ProductsListContainer = () => {
   const [elementos, setElementos] = useState([]);
@@ -9,26 +11,26 @@ export const ProductsListContainer = () => {
   const { categoryName } = useParams();
 
   useEffect(() => {
-    let filtrarProductos = productos.filter(
-      (producto) => producto.categoria === categoryName
-    );
+    let itemCollection = collection(db, "productos");
+    let consulta;
 
-    const traerProductos = new Promise((res) => {
-      if (categoryName === "Todos") {
-        res(productos);
-      } else if (categoryName) {
-        res(filtrarProductos);
-      } else {
-        res(productos);
-      }
-    });
-    traerProductos
-      .then((res) => {
-        setElementos(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (!categoryName || categoryName === "Todos") {
+      consulta = itemCollection     
+    } else {
+      consulta = query(itemCollection, where("categoria", "==", categoryName))
+    }
+
+    getDocs(consulta)
+        .then((res) => {
+          let products = res.docs.map((elemento) => {
+            return {
+              id: elemento.id, // el id viene por fuera del resto de los datos del prod
+              ...elemento.data(),
+            };
+          });
+          setElementos(products);
+        })
+        .catch((err) => console.log(err));
   }, [categoryName]);
 
   return <ProductsList elementos={elementos} />;

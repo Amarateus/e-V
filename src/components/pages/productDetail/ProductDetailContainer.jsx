@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { productos } from "../../../productsMock";
 import { ProductDetail } from "./ProductDetail";
 import { CartContext } from "../../../context/CartContext";
+import { db } from "../../../firebaseConfig";
+import { collection, getDoc, doc } from "firebase/firestore";
 
 export const ProductDetailContainer = () => {
   const [producto, setProducto] = useState({});
@@ -12,20 +13,25 @@ export const ProductDetailContainer = () => {
   //   const { id } = useParams();
   const { id } = useParams();
 
-  const cantidad = getTotalQuantityById(+id)
-  console.log("La cantidad es: ", cantidad)
+  const cantidad = getTotalQuantityById(+id);
+  console.log("La cantidad es: ", cantidad);
 
   useEffect(() => {
-    let productosFind = productos.find((producto) => producto.id === +id);
-
-    const getProducto = new Promise((res) => {
-      res(productosFind);
+    let itemCollection = collection(db, "productos");
+    let refDoc = doc(itemCollection, id);
+    getDoc(refDoc).then((res) => {
+      setProducto({
+        id: res.id,
+        ...res.data(),
+      });
     });
-
-    getProducto
-      .then((res) => setProducto(res))
-      .catch((err) => console.log(err));
   }, [id]);
 
-  return <ProductDetail producto={producto} addToCart={addToCart} cantidad={cantidad}/>;
+  return (
+    <ProductDetail
+      producto={producto}
+      addToCart={addToCart}
+      cantidad={cantidad}
+    />
+  );
 };
