@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ProductsList } from "./ProductsList";
-import { productos } from "../../../productsMock";
 import { useParams } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { Loader } from "../../common/loader/Loader";
 
 export const ProductsListContainer = () => {
   const [elementos, setElementos] = useState([]);
@@ -15,23 +15,43 @@ export const ProductsListContainer = () => {
     let consulta;
 
     if (!categoryName || categoryName === "Todos") {
-      consulta = itemCollection     
+      consulta = itemCollection;
     } else {
-      consulta = query(itemCollection, where("categoria", "==", categoryName))
+      consulta = query(itemCollection, where("categoria", "==", categoryName));
     }
 
     getDocs(consulta)
-        .then((res) => {
-          let products = res.docs.map((elemento) => {
-            return {
-              id: elemento.id, // el id viene por fuera del resto de los datos del prod
-              ...elemento.data(),
-            };
-          });
-          setElementos(products);
-        })
-        .catch((err) => console.log(err));
+      .then((res) => {
+        let products = res.docs.map((elemento) => {
+          return {
+            id: elemento.id, // el id viene por fuera del resto de los datos del prod
+            ...elemento.data(),
+          };
+        });
+
+        products.sort(function (a, b) {
+          if (a.precio > b.precio) {
+            return 1;
+          }
+          if (a.precio < b.precio) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+
+        setElementos(products);
+      })
+      .catch((err) => console.log(err));
   }, [categoryName]);
 
-  return <ProductsList elementos={elementos} />;
+  return (
+    <div>
+      {elementos.length > 0 ? (
+        <ProductsList elementos={elementos} />
+      ) : (
+        <Loader />
+      )}
+    </div>
+  );
 };

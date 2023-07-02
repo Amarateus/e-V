@@ -5,7 +5,7 @@ export const ItemCount = ({ stock, initial=1, onAdd }) => {
   const { count, decrement, increment } = useCount(initial, stock);
 
   return (
-    <div>
+    <div style={{width: 400, display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
       <Button variant="contained" onClick={decrement}>-</Button>
       <span>{count}</span>
       <Button variant="contained" onClick={increment}>+</Button>

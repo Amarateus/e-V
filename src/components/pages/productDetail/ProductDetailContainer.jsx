@@ -4,6 +4,8 @@ import { ProductDetail } from "./ProductDetail";
 import { CartContext } from "../../../context/CartContext";
 import { db } from "../../../firebaseConfig";
 import { collection, getDoc, doc } from "firebase/firestore";
+import { Loader } from "../../common/loader/Loader";
+import Swal from 'sweetalert2'
 
 export const ProductDetailContainer = () => {
   const [producto, setProducto] = useState({});
@@ -13,8 +15,23 @@ export const ProductDetailContainer = () => {
   //   const { id } = useParams();
   const { id } = useParams();
 
-  const cantidad = getTotalQuantityById(+id);
-  console.log("La cantidad es: ", cantidad);
+  const cantidad = getTotalQuantityById(id);
+
+  const onAdd = (cant) => {
+    let data = {
+      ...producto,
+      cantidad: cant,
+    };
+    addToCart(data);
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Producto agregado al carrito',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  };
 
   useEffect(() => {
     let itemCollection = collection(db, "productos");
@@ -28,10 +45,12 @@ export const ProductDetailContainer = () => {
   }, [id]);
 
   return (
-    <ProductDetail
-      producto={producto}
-      addToCart={addToCart}
-      cantidad={cantidad}
-    />
+    <div>
+      {producto?.id ? (
+        <ProductDetail producto={producto} cantidad={cantidad} onAdd={onAdd} />
+      ) : (
+        <Loader />
+      )}
+    </div>
   );
 };
