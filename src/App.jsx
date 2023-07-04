@@ -1,10 +1,10 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { ProductsListContainer } from "./components/pages/productsList/ProductsListContainer";
-import { ProductDetailContainer } from "./components/pages/productDetail/ProductDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
-import { CartContainer } from "./components/pages/cart/CartContainer";
+import { menuRoutes } from "./routes/menuRoutes";
+import CartContextProvider from "./context/CartContext";
+menuRoutes;
 
 const darkTheme = createTheme({
   palette: {
@@ -18,16 +18,17 @@ function App() {
       <CssBaseline />
 
       <BrowserRouter>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<ProductsListContainer />} />
-            <Route path="/category/:categoryName" element={<ProductsListContainer />} />
-            <Route path="/productDetail/:id" element={<ProductDetailContainer />} />
-            <Route path="/cart" element={<CartContainer />} />
-          </Route>
+        <CartContextProvider>
+          <Routes>
+            <Route element={<Layout />}>
+              {menuRoutes.map(({ id, path, Element }) => (
+                <Route key={id} path={path} element={<Element />} />
+              ))}
+            </Route>
 
             <Route path="*" element={<h1>404 not found</h1>} />
-        </Routes>
+          </Routes>
+        </CartContextProvider>
       </BrowserRouter>
       {/* <NavBarContainer>
         <Container maxWidth={"md"} sx={{ paddingTop: 3 }}>

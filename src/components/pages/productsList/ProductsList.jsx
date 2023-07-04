@@ -14,11 +14,7 @@ export const ProductsList = ({ elementos }) => {
         {elementos.map((elemento) => {
           return (
             <Grid key={elemento.id} item xs={10} sm={4} md={3}>
-              <ProductCardContainer
-                elemento={elemento}
-                // width={200}
-                mensajeBoton={"Ver detalle"}
-              />
+              <ProductCardContainer elemento={elemento} />
             </Grid>
           );
         })}

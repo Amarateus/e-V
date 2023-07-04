@@ -24,22 +24,24 @@ export function NavBar({
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
-            <Typography
-              variant="h6"
-              noWrap
-              component="h6"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              e-V
-            </Typography>
+            <Button sx={{ color: "white" }}>
+              <Typography
+                variant="h6"
+                noWrap
+                component="h6"
+                sx={{
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                e-V
+              </Typography>
+            </Button>
           </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -81,23 +83,25 @@ export function NavBar({
             </Menu>
           </Box>
           <Link to="/">
-            <Typography
-              variant="h5"
-              noWrap
-              component="h5"
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              e-V
-            </Typography>
+            <Button sx={{ color: "white" }}>
+              <Typography
+                variant="h5"
+                noWrap
+                component="h5"
+                sx={{
+                  mr: 2,
+                  display: { xs: "flex", md: "none" },
+                  flexGrow: 1,
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                e-V
+              </Typography>
+            </Button>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -112,7 +116,9 @@ export function NavBar({
             ))}
           </Box>
           <Link to="/cart">
-            <CartWidgetUi />
+            <Button sx={{ color: "white" }}>
+              <CartWidgetUi />
+            </Button>
           </Link>
         </Toolbar>
       </Container>
