@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const ProductDetail = ({ producto, onAdd, cantidad }) => {
   return (
     <>
-      <Container maxWidth={"xs"} sx={{ paddingTop: 3 }}>
+      <Container maxWidth={"xs"} sx={{ paddingTop: 10, paddingBottom: 10 }}>
         <Box sx={{ textAlign: "center", width: "100%" }}>
           <img src={producto.img} width={"100%"} height={"300"} />
         </Box>

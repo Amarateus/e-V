@@ -1,45 +1,40 @@
-import { CartContainer } from "../components/pages/cart/CartContainer";
-import { CheckoutContainer } from "../components/pages/checkout/CheckoutContainer";
-import { FirebaseAuth } from "../components/pages/firebaseAuth/FirebaseAuth";
-import { Form } from "../components/pages/form/Form";
-import { ProductDetailContainer } from "../components/pages/productDetail/ProductDetailContainer";
-import { ProductsListContainer } from "../components/pages/productsList/ProductsListContainer";
+import {
+    CartContainer
+} from "../components/pages/cart/CartContainer";
+import {
+    CheckoutContainer
+} from "../components/pages/checkout/CheckoutContainer";
+import {
+    ProductDetailContainer
+} from "../components/pages/productDetail/ProductDetailContainer";
+import {
+    ProductsListContainer
+} from "../components/pages/productsList/ProductsListContainer";
 
 
-export const menuRoutes = [
-    {
-        id: "home", 
+export const menuRoutes = [{
+        id: "home",
         path: "/",
         Element: ProductsListContainer
     },
     {
-        id: "categories", 
+        id: "categories",
         path: "/category/:categoryName",
         Element: ProductsListContainer
     },
     {
-        id: "itemDetail", 
+        id: "itemDetail",
         path: "/productDetail/:id",
         Element: ProductDetailContainer
     },
     {
-        id: "cart", 
+        id: "cart",
         path: "/cart",
         Element: CartContainer
     },
     {
-        id: "form", 
-        path: "/form",
-        Element: Form
-    },
-    {
-        id: "checkout", 
+        id: "checkout",
         path: "/checkout",
         Element: CheckoutContainer
-    },
-    {
-        id: "firebaseAuth", 
-        path: "/firebaseAuth",
-        Element: FirebaseAuth
-    } 
+    }
 ]

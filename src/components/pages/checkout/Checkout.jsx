@@ -3,7 +3,7 @@ import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 export const Checkout = ({ handleSubmit, handleChange, errors }) => {
   return (
     <>
-      <Container maxWidth={"md"} sx={{ paddingTop: 3 }}>
+      <Container maxWidth={"md"} sx={{ paddingTop: 10 }}>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2} direction="column" alignItems="center">
             <Grid item>

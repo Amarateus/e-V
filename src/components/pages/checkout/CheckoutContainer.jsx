@@ -58,7 +58,7 @@ export const CheckoutContainer = () => {
     <div>
       {ordenCompraId ? (
         <>
-          <Container maxWidth={"md"} sx={{ paddingTop: 3 }}>
+          <Container maxWidth={"md"} sx={{ paddingTop: 10 }}>
             <div style={{ textAlign: "center" }}>
               <Typography variant="h5" component="h2" my={3}>
                 Su compra fue exitosa ✅
