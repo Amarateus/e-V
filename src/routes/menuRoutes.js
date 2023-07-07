@@ -1,5 +1,6 @@
 import { CartContainer } from "../components/pages/cart/CartContainer";
 import { CheckoutContainer } from "../components/pages/checkout/CheckoutContainer";
+import { FirebaseAuth } from "../components/pages/firebaseAuth/FirebaseAuth";
 import { Form } from "../components/pages/form/Form";
 import { ProductDetailContainer } from "../components/pages/productDetail/ProductDetailContainer";
 import { ProductsListContainer } from "../components/pages/productsList/ProductsListContainer";
@@ -35,5 +36,10 @@ export const menuRoutes = [
         id: "checkout", 
         path: "/checkout",
         Element: CheckoutContainer
-    }  
+    },
+    {
+        id: "firebaseAuth", 
+        path: "/firebaseAuth",
+        Element: FirebaseAuth
+    } 
 ]
