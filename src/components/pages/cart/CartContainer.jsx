@@ -12,7 +12,7 @@ export const CartContainer = () => {
 
   const recargoIva = precioTotal * 0.21;
 
-  const vaciarCarrito = ()=>{
+  const vaciarCarrito = () => {
     Swal.fire({
       title: "¿Seguro quieres vaciar el carrito?",
       showDenyButton: true,
@@ -20,7 +20,6 @@ export const CartContainer = () => {
       confirmButtonText: "Si",
       denyButtonText: `No`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       result.isConfirmed &&
         (clearCart(),
         Swal.fire({
@@ -30,11 +29,11 @@ export const CartContainer = () => {
           timer: 1500,
         }));
     });
-  }
+  };
 
   return (
     <>
-      <Container maxWidth={"lg"} sx={{ paddingTop: 3 }}>
+      <Container maxWidth={"lg"} sx={{ paddingTop: 10, paddingBottom: 10 }}>
         {cart.length > 0 ? (
           <>
             <Grid container spacing={2}>
@@ -53,9 +52,7 @@ export const CartContainer = () => {
                           <Grid item>
                             <img src={product.img} width="60px" height="50px" />
                           </Grid>
-                          {/* <Grid item>
-                            <Typography variant="h7" component="h4">{product.categoria}</Typography>
-                          </Grid> */}
+
                           <Grid item>
                             <Typography variant="h7" component="h4">
                               {product.nombre}

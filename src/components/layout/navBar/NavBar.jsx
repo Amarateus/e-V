@@ -11,7 +11,6 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { CartWidgetUi } from "../../common/cartWidgetUi/CartWidgetUi";
 import { Link } from "react-router-dom";
-// import "./NavBar.module.css"
 
 export function NavBar({
   anchorElNav,
@@ -20,7 +19,7 @@ export function NavBar({
   pages,
 }) {
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">

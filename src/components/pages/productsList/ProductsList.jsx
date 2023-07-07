@@ -3,7 +3,7 @@ import { ProductCardContainer } from "../../common/productCard/ProductCardContai
 
 export const ProductsList = ({ elementos }) => {
   return (
-    <Container maxWidth={"md"} sx={{ paddingTop: 3 }}>
+    <Container maxWidth={"md"} sx={{ paddingTop: 10, paddingBottom: 10}}>
       <Grid
         container
         direction="row"

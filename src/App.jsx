@@ -30,12 +30,6 @@ function App() {
           </Routes>
         </CartContextProvider>
       </BrowserRouter>
-      {/* <NavBarContainer>
-        <Container maxWidth={"md"} sx={{ paddingTop: 3 }}>
-          <ProductsListContainer />
-          <ProductDetailContainer />
-        </Container>
-      </NavBarContainer> */}
     </ThemeProvider>
   );
 }
