@@ -10,6 +10,7 @@
 - Contexts
 - Routes
 - Variables de entorno
+- Deploy con Vercel
 
 ![](https://res.cloudinary.com/dplu5p9du/image/upload/v1688768280/e-V/WhatsApp_Image_2023-07-07_at_7.17.40_PM_cg9f30.jpg)
 
