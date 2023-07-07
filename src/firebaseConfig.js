@@ -4,15 +4,40 @@ import {
 import {
     getFirestore
 } from "firebase/firestore"
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signInWithPopup,
+    GoogleAuthProvider
+} from "firebase/auth"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB4dpKjVFHVMdssJhclOUY2VWX8_mUsKHw",
-    authDomain: "e-votri.firebaseapp.com",
-    projectId: "e-votri",
-    storageBucket: "e-votri.appspot.com",
-    messagingSenderId: "989099010362",
-    appId: "1:989099010362:web:a3b1aebf6324b4e00b8803"
+    apiKey: import.meta.env.VITE_API_KEY,
+    authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app)
+const auth = getAuth(app)
+
+export const logIn = async ({
+    email,
+    password
+}) => {
+    return await signInWithEmailAndPassword(auth, email, password)
+}
+
+export const register = async ( {email, password} )=>{
+    return await createUserWithEmailAndPassword(auth, email, password)
+}
+
+const googleProvider = new GoogleAuthProvider()
+
+export const logInWithGoogle = async ()=>{
+    return await signInWithPopup(auth, googleProvider)
+}
